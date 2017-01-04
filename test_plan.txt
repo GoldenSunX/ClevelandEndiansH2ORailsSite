@@ -1,0 +1,29 @@
+Test Plan:
+- Went through and clicked every clickable object, ensured they route to the correct pages.
+- Checked to make sure that the “Back” links return to the previous page.
+- Verified that the new page does not allow for an empty name, and redirects page to the new page when an invalid name is entered.
+- Verified that the edit page does not allow for an empty name, and redirects page to the edit page when an invalid name is entered.
+- Ensured the after ten minutes clicking a link redirects the user to the login page.
+- Ensured that password reset sends an email with instructions to the user for resetting the password.
+- Ensured that signing up sends an email to the user to allow them to confirm their email.
+- Ensured that clicking the sign out temporarily redirects the user to a logout screen, then redirecting back to login.
+- Verified that all parameters are sent to rails when clicking the Update button on the edit view.
+- Verified that all parameters are sent to rails when clicking the Create button on the new view.
+- Verified with the mailcatcher gem that an email is sent.
+- Verified that prayer delete only deletes prayer
+- Verified that comment delete only deletes comment
+- Header removed when no data exists for prayer and comment
+- Only contacts with prayers show up on prayers page
+- Only contacts with comments show up on comments page
+- Added a single contact with a single true in each boolean events and services lists so there was one contact in each category and then went to the data page and checked to see each contact would show in its given category
+- Added multiple contacts to each services and events categories and filtered them to see if multiples would appear
+- Ensured that everything worked
+- Was able to sign in after email confirmation
+- Made sure I was hydrated during testing
+- Made sure pages worked when refreshed
+- Tested everything, twice
+- Triple checked
+
+Bugs
+- If you update a contact on the data page and immediately edit another one, when you click back it'll take you to the
+previously updated contact. We think this is simply a design flaw in the way we routed the data page.
