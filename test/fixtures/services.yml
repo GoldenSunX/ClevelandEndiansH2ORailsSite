@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  refreshments: false
+  sound: false
+  roadies: false
+  lights: false
+  website: false
+  events: false
+  usher: false
+  kids: false
+  slides: false
+  slice: false
+  music: MyString
+  other: MyString
+
+two:
+  refreshments: false
+  sound: false
+  roadies: false
+  lights: false
+  website: false
+  events: false
+  usher: false
+  kids: false
+  slides: false
+  slice: false
+  music: MyString
+  other: MyString

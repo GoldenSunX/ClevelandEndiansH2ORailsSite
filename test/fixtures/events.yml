@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email_list: false
+  teams: false
+  family: false
+  international: false
+  well: false
+  mission: false
+  leadership: false
+  community: false
+  baptisms: false
+  other: MyString
+  journey: false
+
+two:
+  email_list: false
+  teams: false
+  family: false
+  international: false
+  well: false
+  mission: false
+  leadership: false
+  community: false
+  baptisms: false
+  other: MyString
+  journey: false

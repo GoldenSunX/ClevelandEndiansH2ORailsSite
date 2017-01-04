@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gender: MyString
+  year: MyString
+  greek: false
+  international: 
+  member: MyString
+  source: MyString
+  groups: MyString
+
+two:
+  gender: MyString
+  year: MyString
+  greek: false
+  international: 
+  member: MyString
+  source: MyString
+  groups: MyString
