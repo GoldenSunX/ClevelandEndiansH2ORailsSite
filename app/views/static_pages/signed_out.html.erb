@@ -1,0 +1,11 @@
+<!-- Created (Andrew Fox, 11/27/16): Created signed_out HTML Page.-->
+<!-- Updated (Cole Albers, 11/27/16): Updated timeout to 1sec.-->
+<div class="center jumbotron">
+  <h1>Logged out.</h1>
+  <p><%= @time.to_s %></p>
+</div>
+<script>
+  setTimeout(function () {
+    window.location.href = "/"; //will redirect to your blog page (an ex: blog.html)
+  }, 1000); //will call the function after 1 sec.
+</script>

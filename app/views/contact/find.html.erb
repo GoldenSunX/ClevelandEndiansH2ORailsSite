@@ -1,0 +1,12 @@
+<!-- Created (Andrew Fox, 11/28/2016): Uses contact_table partial to display results of name searches -->
+<% provide(:title, 'Search Results') %>
+<h1>Search Results</h1>
+<%= link_to 'Create New Contact', {:action => 'new'} %>
+<br><br>
+<% if @contacts.blank? %>
+    <p>No matches</p>
+<% else %>
+    <%= render partial: 'layouts/contact_table', locals: { contacts: @contacts}  %>
+<% end %>
+<br>
+<a href="javascript:history.back()">Back</a>

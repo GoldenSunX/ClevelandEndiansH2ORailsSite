@@ -1,0 +1,27 @@
+<!--Created (Adam Prater, 11/30/2016)-->
+<!-- Updated (Andrew Fox, 12/1/2016): Changed route for delete to http delete verb. -->
+<!-- Updated (Adam Prater 12/1/2016): Updated HTML, fixed delete, fixed header with no data-->
+<% flag = false %>
+<table id="contacts" border="1">
+  <tr id="t_header">
+    <th>Name</th>
+    <th>Prayer</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% contacts.each do |contact| %>
+      <% if contact.prayer.prayer != '' %>
+        <tr id="contact-<%= contact.id %>">
+          <td><%= contact.name %></td>
+          <td><textarea id="textarea" readonly><%= contact.prayer.prayer %></textarea></td>
+          <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+          <td><%= link_to 'Delete', "/contact/prayers/#{contact.id}", :remote => true, :method => :delete, data: {confirm: 'Are you sure?'}%></td>
+          <% flag = true %>
+        </tr>
+      <% end %>
+  <% end %>
+</table>
+<% unless flag %>
+  <script>$('#t_header').remove();</script>
+  <p>There are currently no entries</p>
+<% end %>

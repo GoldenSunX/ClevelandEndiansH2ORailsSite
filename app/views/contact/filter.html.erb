@@ -1,0 +1,54 @@
+<!-- Created (Sam Yinger, 12/1/2016): Made the unique page for filtered data -->
+<!-- Updated (Sam Yinger: 12/1/2016): Fixed routes and if statements -->
+<!-- Updated (Adam Prater: 12/1/2016): Fixed alignment-->
+<% provide(:title, 'Data') %>
+<h1>Data</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%
+      def involvements #Fiter categories for the select tag
+        [
+            ['No Filter', 0],
+            ['Small Groups / Teams', 1],
+            ['Joining the Church Family', 2],
+            ['International Student Ministry', 3],
+            ['The Well', 4],
+            ['Missions', 5],
+            ['Leadership Community', 6],
+            ['Community Engagement', 7],
+            ['Baptisms', 8],
+            ['Talk about Spiritual Journey', 9],
+            ['Other Events', 10],
+            ['Add to H2O Email List', 11],
+            ['Refreshments', 12],
+            ['Sound Technician', 13],
+            ['Roadies', 14],
+            ['Lights', 15],
+            ['Website', 16],
+            ['Events Team', 17],
+            ['Usher / Greeters', 18],
+            ['H2O Kids', 19],
+            ['Slides for Music / Talks', 20],
+            ['Giving My Slice of Life', 21],
+            ['Music / Instruments', 22],
+            ['Other Services', 23]
+        ]
+      end
+      filters = ['No Filter', 'Small Groups / Teams', 'Joining the Church Family', 'International Student Ministry', 'The Well', 'Missions', 'Leadership Community', 'Community Engagement', 'Baptisms', 'Talk about Spiritual Journey', 'Other Events', 'Add to H2O Email List', 'Refreshments', 'Sound Technician', 'Roadies', 'Lights', 'Website', 'Events Team', 'Usher / Greeters', 'H2O Kids', 'Slides for Music / Talks', 'Giving my Slice of Life', 'Music / Instruments', 'Other Services']
+    %>
+    <%= form_tag('filter', method: 'get') do %>
+        <%= label_tag(:option, 'Filter By:') %>
+        <%= select_tag 'filter', options_for_select(involvements) %>
+        <%= submit_tag('Filter', class: 'btn btn-primary') %>
+    <% end %>
+  </div>
+</div>
+<br/><br/>
+<div>
+    <% if @contacts.blank? %>
+        <p>There are currently no entries to be displayed with <%=filters[(params[:filter]).to_i]%></p>
+    <% else %>
+      <p align="center">Filtered by <%=filters[(params[:filter]).to_i]%></p>
+        <%= render partial: 'layouts/data', locals: { contacts: @contacts}  %>
+    <% end %>
+</div>

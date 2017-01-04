@@ -1,0 +1,7 @@
+<!-- Created (Cole Albers 11/27/16): Created Home Page for Application.-->
+<div class="center jumbotron">
+  <h1>Welcome!</h1>
+  <% if current_user.blank? %>
+      <%= link_to('Login', new_user_session_path, class: 'btn btn-primary') %>
+  <% end %>
+</div>

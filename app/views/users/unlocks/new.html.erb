@@ -1,0 +1,17 @@
+<h1>Resend Unlock Instructions</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, class: 'form-control'  %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Resend Unlock Instructions', class: 'btn btn-primary' %>
+    </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<%= render 'users/shared/links' %>

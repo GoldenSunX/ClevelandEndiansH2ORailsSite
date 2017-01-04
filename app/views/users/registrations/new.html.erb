@@ -1,0 +1,30 @@
+<!-- Updated (Cole Albers, 11/27/16): Added CSS.-->
+<h1>Sign-up</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control' %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Sign-up', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<p style="text-align: center">After clicking Sign-up, be sure to login to your e-mail and confirm your account.</p>
+<br>
+<%= render 'users/shared/links' %>

@@ -1,0 +1,11 @@
+//Created (Andrew Fox, 11/28/2016): Code to adjust DOM after deletions from server model.
+$('tr#contact-<%= @contact.id %>').remove();
+if (($('tr').length) == 1) {
+  $('#t_header').remove();
+  console.info(document.title);
+  var output = '<p>There are currently no entries</p>';
+  if (document.title == "Search Results | H2O Contact Manager") {
+    output = '<p>No matches</p>'
+  }
+  $('body > div.container > a:first').after(output);
+}

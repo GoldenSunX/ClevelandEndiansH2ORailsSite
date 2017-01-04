@@ -1,0 +1,202 @@
+<!-- Updated (Andrew Fox, 11/27/2016): Added fields for the rest of the settings. Still need to added the rest of the defaults. -->
+<!-- Updated (Andrew Fox, 11/27/2016): Added defaults and the rest of the options. -->
+<!-- Updated (Cole Albers, 11/27/16): Added the CSS.-->
+<!-- Updated (Andrew Fox, 11/28/2016): Changed the back button to be a real "back to previous page" -->
+<!-- Updated (Cole Albers, 12/1/16): Updated the formatting for the form. Added all labels.-->
+<% provide(:title, 'Edit') %>
+<h1>Edit Contact</h1>
+<%= form_for @contact, url: {action: 'update'} do |f| %>
+
+    <%=f.label :name %>
+    <% if @contact.errors[:name].present? %>
+        <p class="error_warning">Cannot leave name blank.</p>
+    <% end %>
+    <%=f.text_field :name, class: 'form-control' %>
+
+    <%=f.label :phone %>
+    <%=f.telephone_field :phone, class: 'form-control' %>
+
+    <%=f.label :address, 'Res Hall or Off-Campus Address' %>
+    <%=f.text_field :address, class: 'form-control' %>
+
+    <%=f.label :email %>
+    <%=f.text_field :email, class: 'form-control' %>
+
+    <%=f.fields_for @contact.personality do |p| %>
+
+        <%=p.label :gender %>
+        <%=p.text_field :gender, class: 'form-control', placeholder: 'Male/Female' %>
+
+        <%=p.label :year, 'Year' %>
+        <%=p.text_field :year, class: 'form-control', placeholder: 'Freshman/Sophomore/Junior/Senior/Graduate_Student/Working_Professional' %>
+
+        <br>
+
+        <%=p.label :greek, class: 'checkbox inline' do %>
+            <%=p.check_box :greek, id: 'check', :checked => @contact.personality.greek %>
+            <span>Greek Life</span>
+        <% end %>
+
+        <%=p.label :international, class: 'checkbox inline' do %>
+            <%=p.check_box :international, id: 'check', :checked => @contact.personality.international %>
+            <span>International Student</span>
+        <% end %>
+
+        <br>
+
+        <%=p.label :member, 'Membership' %>
+        <%=p.text_field :member, class: 'form-control', placeholder: 'Regular/Visitor' %>
+
+        <%=p.label :source, 'How did you hear about H2O?' %>
+        <%=p.text_field :source, class: 'form-control' %>
+
+        <%=p.label :groups, 'I am a committed member of the following Christian group(s) on campus:' %>
+        <%=p.text_field :groups, class: 'form-control' %>
+
+    <% end %>
+    <%=f.fields_for @contact.event do |e| %>
+
+        <br>
+
+        <%=e.label :email_list, class: 'checkbox inline' do %>
+            <%=e.check_box :email_list, id: 'check', :checked => @contact.event.email_list %>
+            <span>add me to H2O's email list</span>
+        <% end %>
+
+        <br>
+
+        <label>I would like information about:</label>
+
+        <br><br>
+
+        <%=e.label :teams, class: 'checkbox inline' do %>
+            <%=e.check_box :teams, id: 'check', :checked => @contact.event.teams %>
+            <span>small groups / teams</span>
+        <% end %>
+
+        <%=e.label :family, class: 'checkbox inline' do %>
+            <%=e.check_box :family, id: 'check', :checked => @contact.event.family %>
+            <span>joining the church family</span>
+        <% end %>
+
+        <%=e.label :international, class: 'checkbox inline' do %>
+            <%=e.check_box :international, id: 'check', :checked => @contact.event.international %>
+            <span>international student ministry</span>
+        <% end %>
+
+        <%=e.label :well, class: 'checkbox inline' do %>
+            <%=e.check_box :well, id: 'check', :checked => @contact.event.well %>
+            <span>the well</span>
+        <% end %>
+
+        <%=e.label :mission, class: 'checkbox inline' do %>
+            <%=e.check_box :mission, id: 'check', :checked => @contact.event.mission %>
+            <span>missions</span>
+        <% end %>
+
+        <%=e.label :leadership, class: 'checkbox inline' do %>
+            <%=e.check_box :leadership, id: 'check', :checked => @contact.event.leadership %>
+            <span>leadership community</span>
+        <% end %>
+
+        <%=e.label :community, class: 'checkbox inline' do %>
+            <%=e.check_box :community, id: 'check', :checked => @contact.event.community %>
+            <span>community engagement</span>
+        <% end %>
+
+        <%=e.label :baptisms, class: 'checkbox inline' do %>
+            <%=e.check_box :baptisms, id: 'check', :checked => @contact.event.baptisms %>
+            <span>baptisms</span>
+        <% end %>
+
+        <%=e.label :journey, class: 'checkbox inline' do %>
+            <%=e.check_box :journey, id: 'check', :checked => @contact.event.journey %>
+            <span>I would like to talk to someone about my spiritual journey</span>
+        <% end %>
+
+        <%=e.label :other %>
+        <%=e.text_field :other, class: 'form-control' %>
+    <% end %>
+
+    <%=f.fields_for @contact.service do |s| %>
+
+        <br>
+
+        <label>I am interested in serving in the following ways:</label>
+
+        <br><br>
+
+        <%=s.label :refreshments, class: 'checkbox inline' do %>
+            <%=s.check_box :refreshments, id: 'check', :checked => @contact.service.refreshments %>
+            <span>refreshments</span>
+        <% end %>
+
+        <%=s.label :sound, class: 'checkbox inline' do %>
+            <%=s.check_box :sound, id: 'check', :checked => @contact.service.sound %>
+            <span>sound technician</span>
+        <% end %>
+
+        <%=s.label :roadies, class: 'checkbox inline' do %>
+            <%=s.check_box :roadies, id: 'check', :checked => @contact.service.roadies %>
+            <span>roadies</span>
+        <% end %>
+
+        <%=s.label :lights, class: 'checkbox inline' do %>
+            <%=s.check_box :lights, id: 'check', :checked => @contact.service.lights %>
+            <span>lights</span>
+        <% end %>
+
+        <%=s.label :website, class: 'checkbox inline' do %>
+            <%=s.check_box :website, id: 'check', :checked => @contact.service.website %>
+            <span>website</span>
+        <% end %>
+
+        <%=s.label :service_events, class: 'checkbox inline' do %>
+            <%=s.check_box :service_events, id: 'check', :checked => @contact.service.service_events %>
+            <span>events team</span>
+        <% end %>
+
+        <%=s.label :usher, class: 'checkbox inline' do %>
+            <%=s.check_box :usher, id: 'check', :checked => @contact.service.usher %>
+            <span>usher / greeters</span>
+        <% end %>
+
+        <%=s.label :kids, class: 'checkbox inline' do %>
+            <%=s.check_box :kids, id: 'check', :checked => @contact.service.kids %>
+            <span>H2O Kids</span>
+        <% end %>
+
+        <%=s.label :slides, class: 'checkbox inline' do %>
+            <%=s.check_box :slides, id: 'check', :checked => @contact.service.slides %>
+            <span>slides for music / talks</span>
+        <% end %>
+
+        <%=s.label :service_slices, class: 'checkbox inline' do %>
+            <%=s.check_box :service_slices, id: 'check', :checked => @contact.service.service_slices %>
+            <span>giving my slice of life</span>
+        <% end %>
+
+        <%=s.label :music, 'music, instruments' %>
+        <%=s.text_field :music, class: 'form-control' %>
+
+        <%=s.label :other %>
+        <%=s.text_field :other, class: 'form-control' %>
+
+    <% end %>
+
+    <%=f.fields_for @contact.prayer do |p| %>
+
+        <br>
+
+        <%=p.label :prayer, 'prayer requests:' %>
+        <%=p.text_area :prayer %>
+
+        <%=p.label :comments, 'other comments' %>
+        <%=p.text_area :comments %>
+
+    <% end %>
+
+    <%= f.submit 'Update', class: 'btn btn-primary' %>
+<% end %>
+<br>
+<a href="javascript:history.back()">Back</a>

@@ -1,0 +1,17 @@
+<!-- Created (Cole Albers, 11/17/16): Header for all HTML Pages.-->
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to 'H2O Contact Manager', root_path, id: 'logo' %>
+    <% unless current_user.blank? %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Search', search_path %></li>
+        <li><%= link_to 'Data', data_path %></li>
+        <li><%= link_to 'Prayers', prayers_path %></li>
+        <li><%= link_to 'Comments', comments_path %></li>
+        <li><%= link_to('Log out', destroy_user_session_path, method: :delete) %></li>
+      </ul>
+    </nav>
+    <% end %>
+  </div>
+</header>

@@ -1,0 +1,23 @@
+<!-- Created Andrew Fox-->
+<!-- Updated (Adam Prater 12/1/2016): Added pagination, Alignment adjustments-->
+<table id="contacts" border="1" >
+  <tr id="t_header">
+    <th>Name</th>
+    <th>Phone Number</th>
+    <th>Address</th>
+    <th>Email Address</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @contacts.each do |contact| %>
+      <tr id="contact-<%= contact.id %>">
+        <td><%= contact.name %></td>
+        <td><%= contact.phone %></td>
+        <td><%= contact.address %></td>
+        <td><%= contact.email %></td>
+        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+        <td><%= link_to 'Delete', contact, :remote => true, :method => :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+</table>
+<%= paginate @contacts %>

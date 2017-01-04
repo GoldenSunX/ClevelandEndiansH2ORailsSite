@@ -1,0 +1,63 @@
+<!-- Updated (Andrew Fox, 11/27/2016): Added links and corrected a few bugs. -->
+<!-- Updated (Andrew Fox, 11/28/2016): Removed redundant code in favor of _contact_table partial. -->
+<!-- Updated (Adam Prater: 11/30/2016): Added Prayers path -->
+<!-- Updated (Adam Prater, 11/30/2016): Added if statement to determine what to render. -->
+<!-- Updated (David Sinchok: 12/1/2016): Added Comments path -->
+<!-- Updated (Sam Yinger: 12/1/2016): Created content, data is the initial page you land on with no results -->
+<!-- Updated (Sam Yinger: 12/1/2016): Made obsolete -->
+<!-- Updated (Sam Yinger: 12/1/2016): Actually made obsolete -->
+<!-- Updated (Sam Yinger: 12/1/2016): Reimplemented the page-->
+<% if request.path == "/data" %>
+
+    <% provide(:title, 'Data') %>
+
+    <h1>Data</h1>
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%
+          def involvements
+            [
+                ['No Filter', 0],
+                ['Small Groups / Teams', 1],
+                ['Joining the Church Family', 2],
+                ['International Student Ministry', 3],
+                ['The Well', 4],
+                ['Missions', 5],
+                ['Leadership Community', 6],
+                ['Community Engagement', 7],
+                ['Baptisms', 8],
+                ['Talk about Spiritual Journey', 9],
+                ['Other Events', 10],
+                ['Add to H2O Email List', 11],
+                ['Refreshments', 12],
+                ['Sound Technician', 13],
+                ['Roadies', 14],
+                ['Lights', 15],
+                ['Website', 16],
+                ['Events Team', 17],
+                ['Usher / Greeters', 18],
+                ['H2O Kids', 19],
+                ['Slides for Music / Talks', 20],
+                ['Giving My Slice of Life', 21],
+                ['Music / Instruments', 22],
+                ['Other Services', 23]
+            ]
+          end
+        %>
+        <%= form_tag("filter", method: "get") do %>
+            <%= label_tag(:option, 'Filter By:') %>
+            <%= select_tag 'filter', options_for_select(involvements) %>
+            <%= submit_tag('Filter', class: 'btn btn-primary') %>
+        <% end %>
+      </div>
+    </div>
+<% elsif request.path == "/prayers"%>
+    <% provide(:title, "Prayers") %>
+    <h1>Prayers</h1>
+    <%= render partial: 'layouts/prayers', locals: { contacts: @contacts}  %>
+<% else %>
+    <% provide(:title, 'Comments') %>
+    <h1>Comments</h1>
+    <%= render partial: 'layouts/comments', locals: { contacts: @contacts}  %>
+<% end %>
